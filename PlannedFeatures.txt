@@ -1,0 +1,17 @@
+_Build a sort of "announcement's table" in perhaps the start of every floor, so that way people can see news
+_Fill the floors with interactable computers that user can send emails from
+_Add special codes in the elevator keypad that unlock things or floors... easter eggs
+_Lots of interactable objects
+_Add the possibility for users to leave sticky notes in some places, and they can choose the note's color
+_Add npcs with dialogue, maybe a collection of dialogue that would randomly display each time the user clicks, and throughout the life of the project I myself would update that dialogue
+_Need to think of a clever way for users to form connections and interact with each other, find each other without chat or chat groups
+, maybe a cool way would be a board that showed all the users that were on a floor at a time, but I can think of something better
+_Add ambient sounds to the offices, and special sound to special offices
+_Maybe add some office people in the scenarios, static people, just for decoration, but this goes tied to user interaction, so if I find
+a better way, I'll do that
+_Add "ranks" for each user, like boss, intern, ceo, etc. roleplay
+_Add user data that lets or not users access certain floors, based on the user's progress
+_Think about what progress is..
+_Make some unique items that only a user can have at a time, so that user can leave them in the environment so that other user can pick it up and repeat
+_Implement a kind of market system where users would trade for unique objects with each other
+_Make random npcs appear in the elevator, with custom dialogue and variety. Not all the time though
