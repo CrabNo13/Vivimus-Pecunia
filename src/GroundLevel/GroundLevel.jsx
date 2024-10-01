@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import Reception from './scenes/Reception'
 import Lobby from './scenes/Lobby';

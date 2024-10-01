@@ -1,4 +1,3 @@
-import React from 'react'
 import ReceptionImage from '../../textures/reception_beta.png'
 
 function Reception({ changeScene }) {
@@ -6,7 +5,7 @@ function Reception({ changeScene }) {
         <div>
             <img src={ReceptionImage} className="main" />
             <button className="doorHandle" onClick={() => changeScene('Lobby')} style={{
-                left: "240px"
+                left: "238px"
             }}></button>
         </div>
     )
