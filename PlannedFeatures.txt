@@ -15,3 +15,5 @@ _Think about what progress is..
 _Make some unique items that only a user can have at a time, so that user can leave them in the environment so that other user can pick it up and repeat
 _Implement a kind of market system where users would trade for unique objects with each other
 _Make random npcs appear in the elevator, with custom dialogue and variety. Not all the time though
+_Add accessibility because why not
+_Make the UI where the user's name and rank are displayed appear like an ID card or something like that
