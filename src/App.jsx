@@ -1,15 +1,19 @@
-import { useState } from 'react'
-import './App.css'
-import GroundLevel from './GroundLevel/GroundLevel'
-import Layout from './Layout'
+import React, { useState } from 'react';
+import './App.css';
+import GroundLevel from './GroundLevel/GroundLevel';
+import Layout from './Layout';
+
+export const Context = React.createContext();
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [items, modifyItem] = useState([{ id: 1, name: 'key' }, { id: 2, name: 'thing' }])
 
   return (
-    <Layout>
-      <GroundLevel />
-    </Layout>
+    <Context.Provider value={[items, modifyItem]} >
+      <Layout>
+        <GroundLevel />
+      </Layout>
+    </Context.Provider >
   )
 }
 

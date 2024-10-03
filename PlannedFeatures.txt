@@ -17,3 +17,4 @@ _Implement a kind of market system where users would trade for unique objects wi
 _Make random npcs appear in the elevator, with custom dialogue and variety. Not all the time though
 _Add accessibility because why not
 _Make the UI where the user's name and rank are displayed appear like an ID card or something like that
+_Add a usb object you can connect to a pc, to scan its files or to run an antivirus
