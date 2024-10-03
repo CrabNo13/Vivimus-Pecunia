@@ -5,7 +5,7 @@ import { Context } from '../App';
 
 function GroundLevel() {
     const [currentScene, setCurrentScene] = useState('Reception')
-    const [items, modifyItem] = useContext(Context)
+    const { items, modifyItem } = useContext(Context)
 
     const renderScene = () => {
         switch (currentScene) {

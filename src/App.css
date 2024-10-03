@@ -103,3 +103,26 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.interactionBox {
+  position: fixed;
+  background-color: rgba(72, 255, 62, 0.493);
+  height: 40vh;
+  width: 30vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.apple {
+  position: fixed;
+  background-image: url(./textures/apple.png);
+  background-color: #cccccc00;
+  background-size: 50px 50px;
+  image-rendering: pixelated;
+  border: none;
+  height: 50px;
+  width: 50px;
+  right: 20vw;
+  bottom: 43vh;
+}
