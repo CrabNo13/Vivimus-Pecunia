@@ -1,6 +1,7 @@
 import ProfilePic from './textures/cat_profile.png';
 import { useState, useContext, useEffect } from 'react';
 import { Context } from './App';
+import { getImage } from './textures/ImageMaps'
 
 function Layout({ children }) {
     const [inventoryVisible, setInventoryVisible] = useState(false);
@@ -30,17 +31,21 @@ function Settings() {
 };
 
 function Hotbar({ inventoryVisible, setInventoryVisible }) {
+    const { equippedItem } = useContext(Context);
+
+    const image = getImage(equippedItem.id);
 
     const handleHotbarClick = (event) => {
         event.stopPropagation();
         setInventoryVisible(!inventoryVisible);
     }
 
-    return <button className="hotbar" onClick={handleHotbarClick}></button>
+    return <button className="hotbar" onClick={handleHotbarClick}><img src={image} style={{ height: '90px', width: '90px', imageRendering: 'pixelated' }} /></button>
 };
 
 function Inventory({ setInventoryVisible }) {
-    const { items, modifyItem } = useContext(Context)
+    const { items, modifyItem } = useContext(Context);
+    const [hoveredItem, setHoveredItem] = useState(null);
 
     const hotbarElement = document.querySelector('.hotbar');
 
@@ -60,13 +65,20 @@ function Inventory({ setInventoryVisible }) {
         };
     }, []);
 
-    return <div className="inventory">
-        {items.map((item) => (
-            <div>
-                {item.name}
-            </div>
-        ))}
-    </div>
+    return <>
+        <div className="inventory">
+            {items.map((item) => (
+                <div className="inventoryItem"
+                    onMouseEnter={() => { setHoveredItem(item) }} onMouseLeave={() => { setHoveredItem(null) }}>
+                    {item.name}
+                </div>
+            ))}
+        </div>
+        {hoveredItem && (<div className="hoverBox">
+            <h1>{hoveredItem.name}</h1>
+            <p>{hoveredItem.description}</p>
+        </div>)}
+    </>
 };
 
 function InteractionBox() {

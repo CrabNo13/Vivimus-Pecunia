@@ -3,11 +3,12 @@ import ReceptionImage from '../../textures/reception_beta.png'
 import { Context } from '../../App'
 
 function Reception({ changeScene }) {
-    const { setInteractionBoxVisible, setInteractionItem } = useContext(Context);
+    const { setInteractionBoxVisible, setInteractionItem, setEquippedItem } = useContext(Context);
 
     const handleItemClick = (item) => {
         setInteractionItem(item);
         setInteractionBoxVisible(true);
+        setEquippedItem(item);
     };
 
     return (
@@ -23,7 +24,7 @@ function Reception({ changeScene }) {
 
 function Apple({ handleItemClick }) {
 
-    const item = { id: 5, name: 'Apple', description: 'Just your average apple, scares off doctors' }
+    const item = { id: 'apple', name: 'Apple', description: 'Just your average apple, scares off doctors' }
 
 
     return <button className='apple' onClick={() => handleItemClick(item)}>

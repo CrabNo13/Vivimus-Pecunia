@@ -89,19 +89,41 @@ body {
   position: fixed;
   background-color: rgb(167, 167, 167);
   bottom: 20px;
-  left: 20px;
-  height: 30px;
-  width: 30px;
+  left: 50px;
+  height: 100px;
+  width: 100px;
 }
 
 .inventory {
   position: fixed;
+  display: grid;
   background-color: rgba(71, 206, 251, 0.622);
   height: 50vh;
   width: 50vw;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  grid-template-columns: repeat(6, 1fr);
+  overflow-y: scroll;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.inventoryItem {
+  background-color: chocolate;
+  image-rendering: pixelated;
+  width: 80px;
+  height: 80px;
+}
+
+.hoverBox {
+  position: fixed;
+  background-color: deepskyblue;
+  width: 200px;
+  height: 300px;
+  top: 185px;
+  left: 180px;
 }
 
 .interactionBox {
