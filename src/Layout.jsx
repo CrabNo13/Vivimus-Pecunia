@@ -77,6 +77,7 @@ function Inventory({ setInventoryVisible }) {
         {hoveredItem && (<div className="hoverBox">
             <h1>{hoveredItem.name}</h1>
             <p>{hoveredItem.description}</p>
+            <p>This is a dummy text that will later be filled with useful item information...</p>
         </div>)}
     </>
 };
