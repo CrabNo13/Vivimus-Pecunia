@@ -86,15 +86,29 @@ body {
 }
 
 .hotbar {
+  display: grid;
   position: fixed;
-  background-color: rgb(167, 167, 167);
+  background-color: grey;
   bottom: 20px;
-  left: 50px;
+  left: 24px;
+  height: 100px;
+  width: 140px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.inventoryButton {
+  background-color: burlywood;
+  height: 100px;
+  width: 40px;
+}
+
+.equippedItem {
+  background-color: rgb(167, 167, 167);
   height: 100px;
   width: 100px;
 }
 
-.inventory {
+.inventoryBox {
   position: fixed;
   display: grid;
   background-color: rgba(71, 206, 251, 0.622);
@@ -117,7 +131,7 @@ body {
   height: 80px;
 }
 
-.hoverBox {
+.invInteractionBox {
   position: fixed;
   background-color: deepskyblue;
   width: 200px;

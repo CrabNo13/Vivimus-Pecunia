@@ -1,7 +1,9 @@
 import ProfilePic from './textures/cat_profile.png';
 import { useState, useContext, useEffect } from 'react';
 import { Context } from './App';
-import { getImage } from './textures/ImageMaps'
+import { getImage } from './textures/ImageMaps';
+import { ItemsList } from './ItemsList';
+import InvInteractionBox from './inventory/InvInteractionBox';
 
 function Layout({ children }) {
     const [inventoryVisible, setInventoryVisible] = useState(false);
@@ -33,30 +35,35 @@ function Settings() {
 function Hotbar({ inventoryVisible, setInventoryVisible }) {
     const { equippedItem } = useContext(Context);
 
-    const image = getImage(equippedItem.id);
+    const image = getImage(equippedItem);
 
     const handleHotbarClick = (event) => {
         event.stopPropagation();
         setInventoryVisible(!inventoryVisible);
     }
 
-    return <button className="hotbar" onClick={handleHotbarClick}><img src={image} style={{ height: '90px', width: '90px', imageRendering: 'pixelated' }} /></button>
+    return <div className="hotbar">
+        <button className="inventoryButton" onClick={handleHotbarClick}></button>
+        <button className="equippedItem">
+            <img src={image} style={{ height: '90px', width: '90px', imageRendering: 'pixelated' }} />
+        </button>
+    </div>
 };
 
 function Inventory({ setInventoryVisible }) {
-    const { items, modifyItem } = useContext(Context);
-    const [hoveredItem, setHoveredItem] = useState(null);
+    const { playerItems } = useContext(Context);
+    const [selectedItem, setSelectedItem] = useState(null);
 
-    const hotbarElement = document.querySelector('.hotbar');
+    const inventoryButtonElement = document.querySelector('.inventoryButton');
 
+    {/*The following code makes it so when you click outside the inventory or interaction boxes, the inventory ui closes. I don't know how it works, I don't wanna know how it works, but just don't touch it since it will break.*/ }
     const handleClickOutside = (event) => {
-        if (!event.target.closest('.inventory') &&
-            hotbarElement &&
-            !hotbarElement.contains(event.target)) {
+        if (!event.target.closest('.inventoryUi') &&
+            inventoryButtonElement &&
+            !inventoryButtonElement.contains(event.target)) {
             setInventoryVisible(false);
         }
     };
-
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
 
@@ -65,28 +72,27 @@ function Inventory({ setInventoryVisible }) {
         };
     }, []);
 
-    return <>
-        <div className="inventory">
-            {items.map((item) => (
-                <div className="inventoryItem"
-                    onMouseEnter={() => { setHoveredItem(item) }} onMouseLeave={() => { setHoveredItem(null) }}>
-                    {item.name}
-                </div>
-            ))}
+    return <div className="inventoryUi">
+        <div className="inventoryBox">
+            {playerItems.map((itemId) => {
+                const item = ItemsList[itemId]
+                return (
+                    <button className="inventoryItem" onClick={() => setSelectedItem(itemId)}>
+                        {item.name}
+                    </button>
+                )
+            })}
         </div>
-        {hoveredItem && (<div className="hoverBox">
-            <h1>{hoveredItem.name}</h1>
-            <p>{hoveredItem.description}</p>
-            <p>This is a dummy text that will later be filled with useful item information...</p>
-        </div>)}
-    </>
+
+        {selectedItem && <InvInteractionBox selectedItem={selectedItem} setSelectedItem={setSelectedItem} />}
+    </div>
 };
 
 function InteractionBox() {
-    const { interactionItem, setInteractionBoxVisible, items, modifyItem } = useContext(Context);
+    const { interactionItem, setInteractionBoxVisible, playerItems, modifyPlayerItems } = useContext(Context);
 
     const objectPickup = () => {
-        modifyItem([...items, interactionItem]);
+        modifyPlayerItems([...playerItems, interactionItem]);
         setInteractionBoxVisible(false);
     }
 
@@ -104,7 +110,7 @@ function InteractionBox() {
         };
     }, []);
 
-    return <div className="interactionBox"><h1>{interactionItem.name}</h1> <br /> <p>{interactionItem.description}</p> <br />
+    return <div className="interactionBox"><h1>{ItemsList[interactionItem].name}</h1> <br /> <p>{ItemsList[interactionItem].description}</p> <br />
         <button onClick={objectPickup}>pick up item</button>
     </div>;
 }

@@ -24,7 +24,7 @@ function Reception({ changeScene }) {
 
 function Apple({ handleItemClick }) {
 
-    const item = { id: 'apple', name: 'Apple', description: 'Just your average apple, scares off doctors' }
+    const item = 3;
 
 
     return <button className='apple' onClick={() => handleItemClick(item)}>

@@ -1,5 +1,5 @@
 const imageMap = {
-    apple: '/src/textures/apple.png'
+    3: '/src/textures/apple.png'
 };
 
 export function getImage(itemId) {

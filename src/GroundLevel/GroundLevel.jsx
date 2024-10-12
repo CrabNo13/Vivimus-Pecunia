@@ -5,7 +5,7 @@ import { Context } from '../App';
 
 function GroundLevel() {
     const [currentScene, setCurrentScene] = useState('Reception')
-    const { items, modifyItem } = useContext(Context)
+    const { playerItems, modifyPlayerItems } = useContext(Context)
 
     const renderScene = () => {
         switch (currentScene) {
@@ -19,9 +19,8 @@ function GroundLevel() {
     }
 
     const handleAddItem = () => {
-        modifyItem([...items, { id: Date.now(), name: 'drink' }]);
+        modifyPlayerItems([...playerItems]);
     };
-    console.log("this is an apple rendering");
 
     return (
         <>
