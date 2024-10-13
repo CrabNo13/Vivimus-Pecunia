@@ -72,10 +72,6 @@ body {
   align-items: center;
 }
 
-.profileButton {
-  position: fixed,
-}
-
 .settingsButton {
   position: fixed;
   background-image: url(./textures/cat_profile.png);
@@ -161,4 +157,12 @@ body {
   width: 50px;
   right: 20vw;
   bottom: 43vh;
+}
+
+.profileMenu {
+  position: fixed;
+}
+
+.profileTab {
+  position: fixed;
 }

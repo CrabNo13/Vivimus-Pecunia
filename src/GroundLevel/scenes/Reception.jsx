@@ -8,7 +8,6 @@ function Reception({ changeScene }) {
     const handleItemClick = (item) => {
         setInteractionItem(item);
         setInteractionBoxVisible(true);
-        setEquippedItem(item);
     };
 
     return (
