@@ -161,6 +161,12 @@ body {
 
 .profileMenu {
   position: fixed;
+  height: 30vh;
+  width: 40vw;
+  left: 40vw;
+  top: 30vh;
+  background-color: rebeccapurple;
+  z-index: 2;
 }
 
 .profileTab {

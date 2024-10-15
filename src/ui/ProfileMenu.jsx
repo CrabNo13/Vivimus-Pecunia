@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function ProfileMenu(setProfileMenuVisible) {
+function ProfileMenu({ setProfileMenuVisible }) {
 
     {/*The following code makes it so when you click outside the profile menu, it closes. I don't know how it works, I don't wanna know how it works, but just don't touch it since it will break.*/ }
     const profileTabElement = document.querySelector('.profileTab');
@@ -20,6 +20,7 @@ function ProfileMenu(setProfileMenuVisible) {
     }, []);
 
     return <div className="profileMenu">
+        <h1>This is the profile menu</h1>
     </div>
 };
 

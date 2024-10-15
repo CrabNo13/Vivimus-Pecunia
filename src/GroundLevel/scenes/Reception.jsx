@@ -14,7 +14,7 @@ function Reception({ changeScene }) {
         <div>
             <img src={ReceptionImage} className="main" />
             <button className="doorHandle" onClick={() => changeScene('Lobby')} style={{
-                left: "238px"
+                left: "238px", zIndex: "-1"
             }}></button>
             <Apple handleItemClick={handleItemClick} />
         </div>

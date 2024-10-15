@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import GroundLevel from './GroundLevel/GroundLevel';
-import Layout from './Layout';
+import AuthPage from './AuthPage';
+import ProtectedRoute from './ProtectedRoute';
 
 export const Context = React.createContext();
 
@@ -10,12 +11,22 @@ function App() {
   const [interactionBoxVisible, setInteractionBoxVisible] = useState(false);
   const [interactionItem, setInteractionItem] = useState(null);
   const [equippedItem, setEquippedItem] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
-    <Context.Provider value={{ playerItems, modifyPlayerItems, interactionBoxVisible, setInteractionBoxVisible, interactionItem, setInteractionItem, equippedItem, setEquippedItem }} >
-      <Layout>
-        <GroundLevel />
-      </Layout>
+    <Context.Provider value={{
+      playerItems, modifyPlayerItems,
+      interactionBoxVisible, setInteractionBoxVisible,
+      interactionItem, setInteractionItem,
+      equippedItem, setEquippedItem,
+      isAuthenticated, setIsAuthenticated
+    }} >
+      <Router>
+        <Routes>
+          <Route path="/authpage" element={<AuthPage />} />
+          <Route path="*" element={<ProtectedRoute />} />
+        </Routes>
+      </Router>
     </Context.Provider >
   )
 }

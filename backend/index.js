@@ -4,16 +4,17 @@ const mongoose = require('mongoose');
 const app = express();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const PORT = process.env.PORT || 3000;
+const cors = require('cors');
+const PORT = process.env.PORT || 5000;
 
-app.use(express.json())
+app.use(cors({ origin: 'http://localhost:5173' }), express.json())
 
 mongoose.connect('mongodb://127.0.0.1:27017/appdb')
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.log(err));
 
 const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
+    username: { type: String, required: true },
     password: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     inventory: { type: Array, default: [] },
@@ -31,10 +32,10 @@ userSchema.pre('save', async function (next) {
 
 const User = mongoose.model('User', userSchema);
 
-app.post('/users', async (req, res) => {
+app.post('/register', async (req, res) => {
     try {
         const user = new User({
-            name: req.body.name,
+            username: req.body.username,
             password: req.body.password,
             email: req.body.email,
             inventory: [],
@@ -54,15 +55,15 @@ app.post('/users', async (req, res) => {
 
 app.post('/login', async (req, res) => {
     try {
-        const user = await User.findOne({ name: req.body.name });
+        const user = await User.findOne({ username: req.body.username });
 
         if (!user) return res.status(400).send('Authentication failed');
 
         const match = await bcrypt.compare(req.body.password, user.password);
 
         if (match) {
-            const accessToken = jwt.sign({ name: user.name }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
-            const refreshToken = jwt.sign({ name: user.name }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
+            const accessToken = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
+            const refreshToken = jwt.sign({ username: user.username }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 
             res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, sameSite: 'Strict' });
             res.json({ accessToken });
@@ -81,7 +82,7 @@ app.post('/token', (req, res) => {
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) return res.sendStatus(403);
 
-        const accessToken = jwt.sign({ name: user.name }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
+        const accessToken = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
         res.json({ accessToken });
     });
 });

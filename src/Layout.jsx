@@ -6,8 +6,10 @@ import Settings from './ui/Settings';
 import Hotbar from './ui/Hotbar';
 import InteractionBox from './ui/InteractionBox';
 import Inventory from './ui/Inventory';
+import GroundLevel from './GroundLevel/GroundLevel';
+import { Route, Routes } from 'react-router-dom';
 
-function Layout({ children }) {
+function Layout() {
     const { interactionBoxVisible } = useContext(Context);
     const [inventoryVisible, setInventoryVisible] = useState(false);
     const [profileMenuVisible, setProfileMenuVisible] = useState(false)
@@ -19,7 +21,9 @@ function Layout({ children }) {
         <Hotbar inventoryVisible={inventoryVisible} setInventoryVisible={setInventoryVisible} />
         {inventoryVisible && <Inventory setInventoryVisible={setInventoryVisible} />}
         {interactionBoxVisible && <InteractionBox />}
-        {children}
+        <Routes>
+            <Route path="/" element={<GroundLevel />} />
+        </Routes>
     </>)
 };
 

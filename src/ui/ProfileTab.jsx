@@ -7,13 +7,10 @@ function ProfileTab({ profileMenuVisible, setProfileMenuVisible }) {
         setProfileMenuVisible(!profileMenuVisible);
     }
 
-    return (
-        <button className="profileTab" style={{ position: "fixed" }} onClick={handleProfileClick}>
-            <img src={ProfilePic} style={{ width: "90px", height: "90px" }} />
-            <div>UserName</div>
-        </button>
-
-    )
+    return <button className="profileTab" style={{ position: "fixed" }} onClick={handleProfileClick}>
+        <img src={ProfilePic} style={{ width: "90px", height: "90px" }} />
+        <div>UserName</div>
+    </button>
 };
 
 export default ProfileTab;
