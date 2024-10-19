@@ -6,7 +6,11 @@ function InteractionBox() {
     const { interactionItem, setInteractionBoxVisible, playerItems, modifyPlayerItems } = useContext(Context);
 
     const objectPickup = () => {
-        modifyPlayerItems([...playerItems, interactionItem]);
+        if (!playerItems.includes(interactionItem)) {
+            modifyPlayerItems([...playerItems, interactionItem]);
+        } else {
+            alert("You already have this item!")
+        }
         setInteractionBoxVisible(false);
     }
 
@@ -24,8 +28,10 @@ function InteractionBox() {
         };
     }, []);
 
-    return <div className="interactionBox"><h1>{ItemsList[interactionItem].name}</h1> <br /> <p>{ItemsList[interactionItem].description}</p> <br />
-        <button onClick={objectPickup}>pick up item</button>
+    return <div className="interactionBox">
+        <h1>{ItemsList[interactionItem].name}</h1>
+        <button onClick={objectPickup}>pick up</button>
+        <button>examine</button>
     </div>;
 };
 

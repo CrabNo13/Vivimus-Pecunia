@@ -167,23 +167,40 @@ body {
 .interactionBox {
   position: fixed;
   z-index: 10;
-  background-color: rgba(72, 255, 62, 0.493);
-  height: 40vh;
-  width: 30vw;
+  background-color: rgba(168, 168, 168, 0.83);
+  height: auto;
+  width: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: solid 5px rgb(59, 59, 59)
 }
 
-.doorHandle {
+.pathWay {
   position: absolute;
   z-index: 1;
-  height: 73px;
-  width: 45px;
-  background-color: #e79e03e3;
-  top: 30%;
-  left: 20%;
+  background-color: #00000000;
+  border: none;
+  border-radius: 10%;
+  filter: blur(8px);
+}
+
+.pathWay:hover {
+  background-color: rgba(255, 255, 0, 0.175);
+}
+
+.pathReceptionOne {
+  height: 33%;
+  width: 8.4%;
+  left: 2%;
+  top: 31%
+}
+
+.pathLobbyOne {
+  height: 61%;
+  width: 16.7%;
+  left: 33.2%;
+  top: 11.5%
 }
 
 .apple {
@@ -191,17 +208,18 @@ body {
   z-index: 1;
   background-image: url(./textures/apple.png);
   background-color: #cccccc00;
-  background-size: 50px 50px;
+  background-size: 100% 100%;
   image-rendering: pixelated;
   border: none;
-  height: 50px;
-  width: 50px;
-  right: 20%;
-  bottom: 43%;
+  height: 5%;
+  width: 3%;
+  right: 42%;
+  bottom: 32%;
 }
 
 .apple:hover {
-  filter: saturate(0%)
+  scale: 110%;
+  transition: scale 0.2s ease;
 }
 
 .profileMenu {

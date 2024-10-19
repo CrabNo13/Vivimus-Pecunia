@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import ReceptionImage from '../../textures/reception_beta.png'
+import ReceptionImage from '../../textures/reception.png'
 import { Context } from '../../App'
 
 function Reception({ changeScene }) {
@@ -14,7 +14,7 @@ function Reception({ changeScene }) {
         <div className={`container ${inventoryVisible ? 'blurred' : ''}`}>
             <div className="scenario">
                 <img src={ReceptionImage} className="scenarioImage" />
-                <button className="doorHandle" onClick={() => changeScene('Lobby')}>zamn</button>
+                <button className="pathWay pathReceptionOne" onClick={() => changeScene('Lobby')}></button>
                 <Apple handleItemClick={handleItemClick} />
             </div>
         </div>

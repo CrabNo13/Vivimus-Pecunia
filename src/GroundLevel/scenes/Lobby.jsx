@@ -1,12 +1,9 @@
-import LobbyImage from '../../textures/lobby_beta.png';
+import LobbyImage from '../../textures/lobby.png';
 
 function Lobby({ changeScene }) {
     return (<div>
         <img src={LobbyImage} className="main" />
-        <button className="doorHandle" onClick={() => changeScene('Reception')} style={{
-            right: "60px",
-            top: "350px"
-        }}></button>
+        <button className="pathWay pathLobbyOne" onClick={() => changeScene('Reception')}></button>
     </div>)
 };
 
