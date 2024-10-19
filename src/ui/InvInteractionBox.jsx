@@ -29,10 +29,12 @@ function InvInteractionBox({ selectedItem, setSelectedItem }) {
         <div className="invInteractionBox">
             <h1>{itemObject.name}</h1>
             <p>{itemObject.description}</p>
-            <button onClick={handleEquip}>Equip</button>
-            <button onClick={handleDelete}>Delete</button>
-            {itemObject.isConsumable && <button onClick={handleConsume}>Use</button>}
-            <button onClick={handleClose}>Close</button>
+            <div className="invInteractionButtons">
+                <button className="invButton" onClick={handleEquip}>Equip</button>
+                <button className="invButton" onClick={handleDelete}>Delete</button>
+                {itemObject.isConsumable && <button className="invButton" onClick={handleConsume}>Use</button>}
+                <button className="invButton" onClick={handleClose}>Close</button>
+            </div>
         </div>
     )
 }

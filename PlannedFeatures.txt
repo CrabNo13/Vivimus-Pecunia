@@ -20,3 +20,5 @@ _Make the UI where the user's name and rank are displayed appear like an ID card
 _Add a usb object you can connect to a pc, to scan its files or to run an antivirus
 _Add many activities around the office like the above, either just for fun or to earn money or progress ranks or something..
 _Add the option for users to customize their "avatar"
+_Add the button to turn off profile tab visibility
+_Add blur to the background when opening the inventory

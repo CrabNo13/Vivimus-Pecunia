@@ -12,6 +12,8 @@ function App() {
   const [interactionItem, setInteractionItem] = useState(null);
   const [equippedItem, setEquippedItem] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [inventoryVisible, setInventoryVisible] = useState(false);
+  const [profileMenuVisible, setProfileMenuVisible] = useState(false);
 
   return (
     <Context.Provider value={{
@@ -19,7 +21,9 @@ function App() {
       interactionBoxVisible, setInteractionBoxVisible,
       interactionItem, setInteractionItem,
       equippedItem, setEquippedItem,
-      isAuthenticated, setIsAuthenticated
+      isAuthenticated, setIsAuthenticated,
+      inventoryVisible, setInventoryVisible,
+      profileMenuVisible, setProfileMenuVisible
     }} >
       <Router>
         <Routes>

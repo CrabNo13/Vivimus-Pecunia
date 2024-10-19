@@ -1,10 +1,10 @@
 import { useContext, useState, useEffect } from "react";
 import { Context } from "../App";
-import { ItemsList } from '../ItemsList';
 import InvInteractionBox from './InvInteractionBox';
+import { getImage } from '../textures/ImageMaps'
 
-function Inventory({ setInventoryVisible }) {
-    const { playerItems } = useContext(Context);
+function Inventory() {
+    const { playerItems, setInventoryVisible } = useContext(Context);
     const [selectedItem, setSelectedItem] = useState(null);
 
 
@@ -28,10 +28,10 @@ function Inventory({ setInventoryVisible }) {
     return <div className="inventoryUi">
         <div className="inventoryBox">
             {playerItems.map((itemId) => {
-                const item = ItemsList[itemId]
+                const image = getImage(itemId)
                 return (
                     <button className="inventoryItem" onClick={() => setSelectedItem(itemId)}>
-                        {item.name}
+                        <img src={image} className="invItemImage" />
                     </button>
                 )
             })}

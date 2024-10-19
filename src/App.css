@@ -18,64 +18,41 @@ body {
   image-rendering: pixelated;
 }
 
-.tile {
+.container {
+  background-color: black;
+  position: relative;
+  height: 100vh;
   width: 100vw;
-  height: 100vh;
-  background:
-    linear-gradient(to top, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.4)),
-    url('../src/textures/white_tile.png') repeat;
-  background-size: 64px 64px;
+  z-index: 0;
+}
+
+.scenario {
+  background-color: rgb(174, 113, 21);
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.scenarioImage {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
   image-rendering: pixelated;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  transform: rotateX(70deg) translateY(0);
-  transform-origin: bottom;
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7),
-    0 10px 30px rgba(0, 0, 0, 0.7);
-}
-
-.wall {
-  width: 200px;
-  height: 100vh;
-  background: url('../src/textures/wall.png') repeat;
-  background-size: 32px 32px;
-  image-rendering: pixelated;
-  position: fixed;
-  z-index: 1;
-}
-
-.left {
-  left: 0;
-  transform:
-    skewY(-5deg) rotateY(-10deg) translateZ(20px);
-  transform-origin: left;
-}
-
-.right {
-  right: 0;
-  transform:
-    skewY(5deg) rotateY(10deg) translateZ(20px);
-  transform-origin: right;
-}
-
-.doorHandle {
-  z-index: 10;
-  height: 73px;
-  width: 45px;
-  background-color: #cccccc00;
-  position: fixed;
-  top: 246px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  object-fit: contain;
 }
 
 .settingsButton {
   position: fixed;
+  z-index: 10;
   background-image: url(./textures/cat_profile.png);
-  bottom: 20px;
+  bottom: 18px;
   right: 20px;
   height: 30px;
   width: 30px;
@@ -84,70 +61,134 @@ body {
 .hotbar {
   display: grid;
   position: fixed;
-  background-color: grey;
-  bottom: 20px;
-  left: 24px;
-  height: 100px;
-  width: 140px;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0);
+  bottom: 1.8vh;
+  left: 1.3vw;
+  height: 13.6vh;
+  width: 18.6vh;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .inventoryButton {
-  background-color: burlywood;
-  height: 100px;
-  width: 40px;
+  background-color: rgb(49, 49, 49);
+  height: 13.6vh;
+  width: 5vh;
 }
 
 .equippedItem {
-  background-color: rgb(167, 167, 167);
-  height: 100px;
-  width: 100px;
+  background: radial-gradient(rgba(128, 128, 128, 0.695), rgba(0, 0, 0, 0.7));
+  height: 13.6vh;
+  width: 13.6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: dotted rgba(0, 0, 0, 0.899) 0.3em;
 }
 
 .inventoryBox {
   position: fixed;
+  z-index: 10;
   display: grid;
-  background-color: rgba(71, 206, 251, 0.622);
-  height: 50vh;
-  width: 50vw;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  grid-template-columns: repeat(6, 1fr);
-  overflow-y: scroll;
+  background-color: rgba(44, 44, 44, 0.655);
+  height: 70vh;
+  width: 611px;
+  bottom: 15.8vh;
+  left: 1.3vw;
+  grid-template-columns: repeat(auto-fill, 80px);
+  grid-template-rows: repeat(auto-fill, 80px);
+  overflow-y: auto;
+  justify-content: center;
   justify-items: center;
   align-items: center;
-  gap: 10px;
+  border: solid 5px rgb(115, 115, 115);
+  padding: 1%;
+  gap: 10%
 }
 
 .inventoryItem {
-  background-color: chocolate;
+  background: radial-gradient(rgb(252, 255, 179), rgb(136, 122, 0));
+  border: outset 0.3em rgb(85, 85, 85);
+  border-radius: 30%;
+  width: 100%;
+  height: 100%;
+}
+
+.invItemImage {
   image-rendering: pixelated;
-  width: 80px;
-  height: 80px;
+  width: 70%;
+  height: auto;
+}
+
+.invItemImage:hover {
+  scale: 140%;
+  transition: scale 0.2s ease;
+}
+
+.equippedItemImage {
+  position: absolute;
+  height: 10vh;
+  width: 10vh;
+  image-rendering: pixelated;
 }
 
 .invInteractionBox {
   position: fixed;
-  background-color: deepskyblue;
-  width: 200px;
-  height: 300px;
-  top: 185px;
-  left: 180px;
+  z-index: 10;
+  color: green;
+  background-color: rgba(0, 0, 0, 0.679);
+  width: 220px;
+  height: 70vh;
+  bottom: 15.8vh;
+  left: 631px;
+  border: solid 0.3em rgb(39, 39, 39);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.invInteractionButtons {
+  background-color: rgba(0, 0, 0);
+  border-top: solid 0.3em rgb(43, 43, 43);
+  display: flex;
+  justify-content: space-between;
+  padding: 3%;
+}
+
+.invButton {
+  height: 24px;
+  width: 50px;
+  font-weight: bold;
+  color: rgb(222, 174, 0);
+  background-color: rgb(33, 33, 33);
 }
 
 .interactionBox {
   position: fixed;
+  z-index: 10;
   background-color: rgba(72, 255, 62, 0.493);
   height: 40vh;
   width: 30vw;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border: solid 5px rgb(59, 59, 59)
+}
+
+.doorHandle {
+  position: absolute;
+  z-index: 1;
+  height: 73px;
+  width: 45px;
+  background-color: #e79e03e3;
+  top: 30%;
+  left: 20%;
 }
 
 .apple {
-  position: fixed;
+  position: absolute;
+  z-index: 1;
   background-image: url(./textures/apple.png);
   background-color: #cccccc00;
   background-size: 50px 50px;
@@ -155,12 +196,17 @@ body {
   border: none;
   height: 50px;
   width: 50px;
-  right: 20vw;
-  bottom: 43vh;
+  right: 20%;
+  bottom: 43%;
+}
+
+.apple:hover {
+  filter: saturate(0%)
 }
 
 .profileMenu {
   position: fixed;
+  z-index: 10;
   height: 30vh;
   width: 40vw;
   left: 40vw;
@@ -170,5 +216,111 @@ body {
 }
 
 .profileTab {
+  border-radius: 5%;
+  background: linear-gradient(to bottom, rgb(18, 18, 18) 78%, rgb(238, 255, 254) 79%);
   position: fixed;
+  display: grid;
+  z-index: 10;
+  max-width: 100%;
+  min-width: 200px;
+  height: 19vh;
+  width: auto;
+  right: 10px;
+  top: 10px;
+  aspect-ratio: 16 / 8;
+  border-color: rgb(0, 0, 0);
+  align-items: center;
+  grid-template-rows: repeat(3, 1fr);
+  font-size: 100%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.profileTab::before {
+  border-radius: 5%;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(123deg, #000000 13%, transparent 25%);
+}
+
+.profileTab::after {
+  border-radius: 5%;
+  content: '';
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(20deg, #1616162f 25%, transparent 22%),
+    linear-gradient(224deg, #2f2f2f75 15%, transparent 52%);
+}
+
+@media (max-width: 1164px) {
+  .inventoryBox {
+    height: 60vh
+  }
+
+  .invInteractionBox {
+    height: 60vh
+  }
+}
+
+@media (max-width: 859px) {
+  .inventoryBox {
+    width: 66vw;
+  }
+
+  .invInteractionBox {
+    width: 30vw;
+    left: 67.3vw;
+  }
+}
+
+@media (max-width: 485px) {
+  .profileTab {
+    right: 50%;
+    transform: translate(50%);
+  }
+
+  .inventoryBox {
+    width: 97.6vw;
+    height: 40vh;
+  }
+
+  .invInteractionBox {
+    width: 97.6vw;
+    height: 20vh;
+    left: 1.3vw;
+    bottom: 55.8vh
+  }
+}
+
+.profilePic {
+  position: absolute;
+  z-index: 2;
+  border-radius: 60%;
+  border: 5px outset rgba(215, 215, 215, 0.589);
+  top: 10%;
+  left: 4%;
+  height: 60%;
+  width: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.profileTextBoxes {
+  color: white;
+}
+
+.profileText {
+  color: rgb(0, 182, 6);
+  -webkit-text-stroke: 0.03em black;
+}
+
+.blurred {
+  filter: blur(8px);
+  transition: filter 2s ease;
 }

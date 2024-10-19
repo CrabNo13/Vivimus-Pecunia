@@ -1,11 +1,9 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import Reception from './scenes/Reception'
 import Lobby from './scenes/Lobby';
-import { Context } from '../App';
 
 function GroundLevel() {
     const [currentScene, setCurrentScene] = useState('Reception')
-    const { playerItems, modifyPlayerItems } = useContext(Context)
 
     const renderScene = () => {
         switch (currentScene) {
@@ -18,14 +16,9 @@ function GroundLevel() {
         }
     }
 
-    const handleAddItem = () => {
-        modifyPlayerItems([...playerItems]);
-    };
-
     return (
         <>
             {renderScene()}
-            <button className='doorHandle' onClick={handleAddItem}>this is an apple</button >
         </>
     )
 };

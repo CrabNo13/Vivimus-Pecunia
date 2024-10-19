@@ -3,7 +3,7 @@ import ReceptionImage from '../../textures/reception_beta.png'
 import { Context } from '../../App'
 
 function Reception({ changeScene }) {
-    const { setInteractionBoxVisible, setInteractionItem, setEquippedItem } = useContext(Context);
+    const { setInteractionBoxVisible, setInteractionItem, inventoryVisible } = useContext(Context);
 
     const handleItemClick = (item) => {
         setInteractionItem(item);
@@ -11,12 +11,12 @@ function Reception({ changeScene }) {
     };
 
     return (
-        <div>
-            <img src={ReceptionImage} className="main" />
-            <button className="doorHandle" onClick={() => changeScene('Lobby')} style={{
-                left: "238px", zIndex: "-1"
-            }}></button>
-            <Apple handleItemClick={handleItemClick} />
+        <div className={`container ${inventoryVisible ? 'blurred' : ''}`}>
+            <div className="scenario">
+                <img src={ReceptionImage} className="scenarioImage" />
+                <button className="doorHandle" onClick={() => changeScene('Lobby')}>zamn</button>
+                <Apple handleItemClick={handleItemClick} />
+            </div>
         </div>
     )
 };
