@@ -29,9 +29,9 @@ function InteractionBox() {
     }, []);
 
     return <div className="interactionBox">
-        <h1>{ItemsList[interactionItem].name}</h1>
-        <button onClick={objectPickup}>pick up</button>
-        <button>examine</button>
+        <h1 className="interactionTitle">{ItemsList[interactionItem].name}</h1>
+        <button className="interactionButton" onClick={objectPickup}>pick up</button>
+        <button className="interactionButton">examine</button>
     </div>;
 };
 

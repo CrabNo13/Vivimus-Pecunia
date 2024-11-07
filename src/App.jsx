@@ -7,6 +7,7 @@ import ProtectedRoute from './ProtectedRoute';
 export const Context = React.createContext();
 
 function App() {
+  const [userData, setUserData] = useState(null);
   const [playerItems, modifyPlayerItems] = useState([1, 2, 2, 2, 2, 2, 1])
   const [interactionBoxVisible, setInteractionBoxVisible] = useState(false);
   const [interactionItem, setInteractionItem] = useState(null);
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <Context.Provider value={{
+      userData, setUserData,
       playerItems, modifyPlayerItems,
       interactionBoxVisible, setInteractionBoxVisible,
       interactionItem, setInteractionItem,

@@ -16,7 +16,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/appdb')
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
     inventory: { type: Array, default: [] },
     rank: { type: String, default: 'Entry-level Employee' },
     xp: { type: Number, default: 0 }
@@ -37,13 +36,13 @@ app.post('/register', async (req, res) => {
         const user = new User({
             username: req.body.username,
             password: req.body.password,
-            email: req.body.email,
             inventory: [],
             rank: 'Entry-level Employee',
             xp: 0
         });
         await user.save();
-        res.status(201).json({ message: 'User created' });
+        const { password, ...userData } = user.toObject();
+        res.status(201).json({ message: 'User created', user: userData });
     } catch (error) {
         if (error.code == 11000) {
             res.status(400).send('Email already taken')
@@ -66,7 +65,11 @@ app.post('/login', async (req, res) => {
             const refreshToken = jwt.sign({ username: user.username }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 
             res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, sameSite: 'Strict' });
-            res.json({ accessToken });
+            const { password, ...userData } = user.toObject();
+            res.json({
+                accessToken,
+                user: userData
+            });
         } else {
             return res.status(400).send('Authentication failed')
         };
