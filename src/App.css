@@ -250,6 +250,12 @@ button {
   align-self: center;
 }
 
+.interactionText {
+  color: white;
+  font-size: x-large;
+  align-self: center;
+}
+
 .interactionButton {
   color: yellow;
   background-color: #00000000;
@@ -271,18 +277,54 @@ button {
   background-color: rgba(255, 255, 0, 0.175);
 }
 
+.pathReturn {
+  height: 10%;
+  width: 30%;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 0%;
+}
+
 .pathReceptionOne {
-  height: 33%;
+  height: 28%;
   width: 8.4%;
   left: 2%;
-  top: 31%
+  top: 37%
+}
+
+.pathReceptionTwo {
+  height: 54%;
+  width: 11%;
+  right: 0%;
+  top: 25%
 }
 
 .pathLobbyOne {
-  height: 61%;
-  width: 16.7%;
-  left: 33.2%;
-  top: 11.5%
+  height: 31%;
+  width: 16.6%;
+  right: 0%;
+  top: 34%
+}
+
+.pathLobbyTwo {
+  height: 26%;
+  width: 8%;
+  left: 51%;
+  top: 37%
+}
+
+.pathOfficeOne {
+  height: 28%;
+  width: 15%;
+  left: 8.8%;
+  top: 35%
+}
+
+.pathMeetingroomOne {
+  height: 43%;
+  width: 8%;
+  left: 41.2%;
+  top: 16%
 }
 
 .apple {

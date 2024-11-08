@@ -1,22 +1,30 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../App";
 import { ItemsList } from '../ItemsList';
 
 function InteractionBox() {
-    const { interactionItem, setInteractionBoxVisible, playerItems, modifyPlayerItems } = useContext(Context);
+    const { interactionItem, setInteractionItem, setInteractionBoxVisible, playerItems, modifyPlayerItems } = useContext(Context);
+    const [dialogue, setDialogue] = useState(null);
 
     const objectPickup = () => {
         if (!playerItems.includes(interactionItem)) {
             modifyPlayerItems([...playerItems, interactionItem]);
+            setInteractionBoxVisible(false);
         } else {
-            alert("You already have this item!")
+            setDialogue('I already have that');
+            setInteractionItem(null);
         }
-        setInteractionBoxVisible(false);
+    }
+
+    const objectInspection = () => {
+        setDialogue(ItemsList[interactionItem].inspection);
+        setInteractionItem(null);
     }
 
     const handleClickOutside = (event) => {
         if (!event.target.closest('.interactionBox')) {
             setInteractionBoxVisible(false);
+            setInteractionItem(null);
         }
     };
 
@@ -29,10 +37,11 @@ function InteractionBox() {
     }, []);
 
     return <div className="interactionBox">
-        <h1 className="interactionTitle">{ItemsList[interactionItem].name}</h1>
-        <button className="interactionButton" onClick={objectPickup}>pick up</button>
-        <button className="interactionButton">examine</button>
-    </div>;
+        {interactionItem && (<h1 className="interactionTitle">{ItemsList[interactionItem].name}</h1>)}
+        {dialogue && <p className="interactionText">{dialogue}</p>}
+        {interactionItem && (<button className="interactionButton" onClick={objectPickup}>pick up</button>)}
+        {interactionItem && (<button className="interactionButton" onClick={objectInspection}>examine</button>)}
+    </div>
 };
 
 export default InteractionBox;

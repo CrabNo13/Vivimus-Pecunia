@@ -15,6 +15,7 @@ function Reception({ changeScene }) {
             <div className="scenario">
                 <img src={ReceptionImage} className="scenarioImage" />
                 <button className="pathWay pathReceptionOne" onClick={() => changeScene('Lobby')}></button>
+                <button className="pathWay pathReceptionTwo" onClick={() => changeScene('Restroom')}></button>
                 <Apple handleItemClick={handleItemClick} />
             </div>
         </div>
