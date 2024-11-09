@@ -3,7 +3,7 @@ import { Context } from "../App";
 import { ItemsList } from "../ItemsList";
 
 function InvInteractionBox({ selectedItem, setSelectedItem }) {
-    const { equippedItem, setEquippedItem, playerItems, modifyPlayerItems } = useContext(Context);
+    const { equippedItem, setEquippedItem, playerInventory, modifyPlayerInventory } = useContext(Context);
 
     const itemObject = ItemsList[selectedItem];
 
@@ -12,7 +12,7 @@ function InvInteractionBox({ selectedItem, setSelectedItem }) {
         setSelectedItem(null);
     };
     const handleDelete = () => {
-        modifyPlayerItems(playerItems.filter(i => i !== selectedItem));
+        modifyPlayerInventory(playerInventory.filter(i => i !== selectedItem));
         setSelectedItem(null);
         if (equippedItem === selectedItem) {
             setEquippedItem(null);

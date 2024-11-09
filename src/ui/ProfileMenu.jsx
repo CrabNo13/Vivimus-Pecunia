@@ -4,7 +4,9 @@ import { Context } from "../App";
 import ProfilePic from '../textures/cat_profile.png';
 
 function ProfileMenu() {
-    const { setProfileMenuVisible, userData, setInteractionBoxVisible, setInteractionAction } = useContext(Context)
+    const { setProfileMenuVisible, userData,
+        setInteractionBoxVisible, setInteractionAction,
+        playerInventory, playerXp } = useContext(Context)
 
     {/*The following code makes it so when you click outside the profile menu, it closes. I don't know how it works, I don't wanna know how it works, but just don't touch it since it will break.*/ }
     const profileTabElement = document.querySelector('.profileTab');
@@ -36,8 +38,8 @@ function ProfileMenu() {
     };
 
     async function SaveProgress() {
-        const xp = userData.xp;
-        const inventory = userData.inventory;
+        const xp = playerXp;
+        const inventory = playerInventory;
 
         try {
             const response = await axios.post('http://localhost:5000/update-progress', {

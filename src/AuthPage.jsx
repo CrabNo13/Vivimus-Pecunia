@@ -6,7 +6,8 @@ import { ContractText } from './Text';
 import Background from './textures/background.png'
 
 function AuthPage() {
-    const { setIsAuthenticated, setUserData } = useContext(Context);
+    const { setIsAuthenticated, setUserData, modifyPlayerInventory, modifyPlayerXp
+    } = useContext(Context);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isRegistering, setIsRegistering] = useState(false);
@@ -25,11 +26,14 @@ function AuthPage() {
             localStorage.setItem('authToken', response.data.token);
             setIsAuthenticated(true);
             setUserData(response.data.user);
+            modifyPlayerInventory(response.data.user.inventory);
+            modifyPlayerXp(response.data.user.xp);
             navigate('/');
         } catch (error) {
             setErrorMessage('Login failed.');
         }
     };
+
     const handleRegister = async (e) => {
         e.preventDefault();
 
@@ -43,6 +47,8 @@ function AuthPage() {
             localStorage.setItem('authToken', response.data.accessToken);
             setIsAuthenticated(true);
             setUserData(response.data.user);
+            modifyPlayerInventory(response.data.user.inventory);
+            modifyPlayerXp(response.data.user.xp);
             navigate('/');
         } catch (error) {
             console.error('Registration failed', error);

@@ -8,10 +8,11 @@ export const Context = React.createContext();
 
 function App() {
   const [userData, setUserData] = useState(null);
-  const [playerItems, modifyPlayerItems] = useState([1, 2, 2, 2, 2, 2, 1])
+  const [playerInventory, modifyPlayerInventory] = useState([]);
+  const [playerXp, modifyPlayerXp] = useState(0);
   const [interactionBoxVisible, setInteractionBoxVisible] = useState(false);
   const [interactionItem, setInteractionItem] = useState(null);
-  const [equippedItem, setEquippedItem] = useState({});
+  const [equippedItem, setEquippedItem] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [inventoryVisible, setInventoryVisible] = useState(false);
   const [profileMenuVisible, setProfileMenuVisible] = useState(false);
@@ -20,7 +21,8 @@ function App() {
   return (
     <Context.Provider value={{
       userData, setUserData,
-      playerItems, modifyPlayerItems,
+      playerInventory, modifyPlayerInventory,
+      playerXp, modifyPlayerXp,
       interactionBoxVisible, setInteractionBoxVisible,
       interactionItem, setInteractionItem,
       equippedItem, setEquippedItem,

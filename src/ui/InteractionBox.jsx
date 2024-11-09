@@ -6,15 +6,16 @@ import { ItemsList } from '../ItemsList';
 function InteractionBox() {
     const { interactionItem, setInteractionItem,
         setInteractionBoxVisible,
-        playerItems, modifyPlayerItems,
+        playerInventory, modifyPlayerInventory,
         interactionAction, setInteractionAction,
         userData
     } = useContext(Context);
     const [dialogue, setDialogue] = useState(null);
 
     const objectPickup = () => {
-        if (!playerItems.includes(interactionItem)) {
-            modifyPlayerItems([...playerItems, interactionItem]);
+        if (!playerInventory.includes(interactionItem)) {
+            modifyPlayerInventory([...playerInventory, interactionItem]);
+            setInteractionItem(null);
             setInteractionBoxVisible(false);
         } else {
             setDialogue('I already have that');

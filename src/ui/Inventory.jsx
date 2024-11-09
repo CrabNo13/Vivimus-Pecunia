@@ -4,9 +4,8 @@ import InvInteractionBox from './InvInteractionBox';
 import { getImage } from '../textures/ImageMaps'
 
 function Inventory() {
-    const { playerItems, setInventoryVisible } = useContext(Context);
+    const { playerInventory, setInventoryVisible } = useContext(Context);
     const [selectedItem, setSelectedItem] = useState(null);
-
 
     {/*The following code makes it so when you click outside the inventory or interaction boxes, the inventory ui closes. I don't know how it works, I don't wanna know how it works, but just don't touch it since it will break.*/ }
     const inventoryButtonElement = document.querySelector('.inventoryButton');
@@ -27,10 +26,10 @@ function Inventory() {
 
     return <div className="inventoryUi">
         <div className="inventoryBox">
-            {playerItems.map((itemId) => {
+            {playerInventory.map((itemId) => {
                 const image = getImage(itemId)
                 return (
-                    <button className="inventoryItem" onClick={() => setSelectedItem(itemId)}>
+                    <button key={itemId} className="inventoryItem" onClick={() => setSelectedItem(itemId)}>
                         <img src={image} className="invItemImage" />
                     </button>
                 )
