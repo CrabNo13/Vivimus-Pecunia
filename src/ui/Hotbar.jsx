@@ -15,7 +15,7 @@ function Hotbar() {
     return <div className="hotbar">
         <button className="inventoryButton" onClick={handleHotbarClick}></button>
         <div className="equippedItem">
-            <img className="equippedItemImage" src={image} />
+            {equippedItem && <img className="equippedItemImage" src={image} />}
         </div>
     </div>
 };

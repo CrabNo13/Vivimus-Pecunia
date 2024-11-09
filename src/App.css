@@ -84,7 +84,7 @@ button {
 }
 
 .scenario {
-  background-color: rgb(174, 113, 21);
+  background-color: black;
   position: relative;
   max-width: 100%;
   max-height: 100%;
@@ -180,7 +180,7 @@ button {
 
 .invItemImage:hover {
   scale: 140%;
-  transition: scale 0.2s ease;
+  transition: scale 0.3s ease;
 }
 
 .equippedItemImage {
@@ -337,8 +337,8 @@ button {
   border: none;
   height: 5%;
   width: 3%;
-  right: 42%;
-  bottom: 32%;
+  right: 48%;
+  bottom: 33.4%;
 }
 
 .apple:hover {
@@ -364,12 +364,15 @@ button {
 }
 
 .profileInfoContainer {
-  height: 100%;
+  height: 60%;
   width: auto;
 }
 
 .profileMenuLeft {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-top: 6%;
   padding-left: 1%;
   padding-right: 1%;
@@ -385,6 +388,8 @@ button {
 
 .profileMenuRight {
   flex: 2;
+  display: flex;
+  flex-direction: column;
   padding: 2%;
   height: 100%;
   max-width: 60%;
@@ -403,21 +408,21 @@ button {
 }
 
 .profileTab {
-  border-radius: 5%;
-  background: linear-gradient(to bottom, rgb(18, 18, 18) 78%, rgb(238, 255, 254) 79%);
+  border-radius: 3%;
+  background: linear-gradient(to bottom, rgb(18, 18, 18) 85%, rgb(238, 255, 254) 86%);
   position: fixed;
-  display: grid;
+  display: flex;
+  justify-content: space-evenly;
   z-index: 10;
   max-width: 100%;
   min-width: 200px;
-  height: 19vh;
+  height: 16vh;
   width: auto;
   right: 10px;
   top: 10px;
   aspect-ratio: 16 / 8;
   border-color: rgb(0, 0, 0);
   align-items: center;
-  grid-template-rows: repeat(3, 1fr);
 }
 
 .profileTab::before {
@@ -494,20 +499,11 @@ button {
   }
 }
 
-.profilePic {
-  position: absolute;
-  z-index: 2;
-  border-radius: 60%;
-  border: 5px outset rgba(215, 215, 215, 0.589);
-  top: 10%;
-  left: 4%;
-  height: 46%;
-  width: auto;
-  aspect-ratio: 1 / 1;
-}
-
 .profileTextBoxes {
   color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
 }
 
 .profileText {
@@ -518,4 +514,41 @@ button {
 .blurred {
   filter: blur(8px);
   transition: filter 1s ease;
+}
+
+.menuButton {
+  border: none;
+  background: none;
+  font-size: x-large;
+}
+
+.menuButton:hover {
+  scale: 120%;
+  transition: scale 0.3s ease;
+}
+
+.menuButtonLeft {
+  position: absolute;
+  bottom: 4%;
+}
+
+.menuButtonsRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 4%;
+  width: 54%;
+}
+
+.save {
+  color: rgb(23, 193, 26);
+}
+
+.logout {
+  color: rgb(255, 216, 23);
+}
+
+.delete {
+  color: red;
 }

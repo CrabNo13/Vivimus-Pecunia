@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import ProfilePic from '../textures/cat_profile.png';
 import { Context } from '../App';
 
 function ProfileTab() {
@@ -12,15 +11,9 @@ function ProfileTab() {
     }
 
     return <button className="profileTab" onClick={handleProfileClick}>
-        <img src={ProfilePic} className='profilePic' />
         <div className='profileTextBoxes'>
-            <span className='profileText'>{userData.username}</span>
-        </div>
-        <div className='profileTextBoxes'>
-            <span className='profileText'>{userData.rank}</span>
-        </div>
-        <div className='profileTextBoxes'>
-            <span className='profileText'>{userData.xp} xp</span>
+            <div className='profileText'>{userData.username}</div>
+            <div className='profileText'>{userData.rank}</div>
         </div>
     </button >
 };

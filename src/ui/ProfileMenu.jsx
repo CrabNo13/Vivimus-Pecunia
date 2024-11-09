@@ -27,32 +27,26 @@ function ProfileMenu() {
             <img src={ProfilePic} className="profilePicMenu"></img>
             <div className="profileInfoContainer">
                 <h2>CONTACT</h2>
-                <br />
                 <p>Email: blah@gmail.com</p>
-                <br />
-                <br />
                 <h2>EDUCATION</h2>
-                <br />
                 <p>Nothing to show here</p>
-                <br />
-                <br />
                 <h2>SKILLS</h2>
-                <br />
-                <p>Can touch his elbow with his tongue</p>
+                <p>Can touch his elbow with his tongue PUT XP ROUND HERE</p>
             </div>
+            <button className="menuButtonLeft menuButton save">Save</button>
         </div>
         <div className="profileMenuRight">
             <div className="profileInfoContainer">
                 <h1 style={{ fontWeight: "900", fontSize: "xx-large" }}>{userData.username}</h1>
-                <br />
+                <h2>Entry-Level Employee</h2>
                 <h2>PROFILE</h2>
-                <br />
                 <p>As a profesional worker on their first job, they know nothing, only that they are hungry and need money.</p>
-                <br />
-                <br />
                 <h2>EXPERIENCE</h2>
-                <br />
                 <p>2019: Worked as a self employed professional sleeper. Worked for even 10 hours a day sometimes.</p>
+            </div>
+            <div className="menuButtonsRight">
+                <button className="menuButton logout">EndDay</button>
+                <button className="menuButton delete">QuitJob</button>
             </div>
         </div>
     </div>

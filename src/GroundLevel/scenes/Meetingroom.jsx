@@ -1,11 +1,19 @@
+import { useContext } from 'react';
+import { Context } from '../../App';
 import MeetingroomImage from '../../textures/meetingroom.png';
 
 function Meetingroom({ changeScene }) {
-    return (<div>
-        <img src={MeetingroomImage} className="main" />
-        <button className="pathWay pathReturn" onClick={() => changeScene('Office')}></button>
-        <button className="pathWay pathMeetingroomOne" onClick={() => changeScene('BossOffice')}></button>
-    </div>)
+    const { inventoryVisible } = useContext(Context);
+
+    return (
+        <div className={`container ${inventoryVisible ? 'blurred' : ''}`}>
+            <div className="scenario">
+                <img src={MeetingroomImage} className="scenarioImage" />
+                <button className="pathWay pathReturn" onClick={() => changeScene('Office')}></button>
+                <button className="pathWay pathMeetingroomOne" onClick={() => changeScene('BossOffice')}></button>
+            </div>
+        </div>
+    )
 };
 
 export default Meetingroom;
