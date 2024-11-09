@@ -35,19 +35,22 @@ function ProfileMenu() {
         setProfileMenuVisible(false)
     };
 
-    async function SaveXP() {
+    async function SaveProgress() {
         const xp = userData.xp;
+        const inventory = userData.inventory;
+
         try {
-            const response = await axios.post('http://localhost:5000/update-xp', {
+            const response = await axios.post('http://localhost:5000/update-progress', {
                 userId: userData._id,
-                xp
+                xp,
+                inventory
             });
 
             setInteractionAction(1);
             setInteractionBoxVisible(true);
             setProfileMenuVisible(false);
         } catch (error) {
-            console.error('Failed to save XP:', error);
+            console.error('Failed to save progress:', error);
         }
     }
 
@@ -60,9 +63,9 @@ function ProfileMenu() {
                 <h2>EDUCATION</h2>
                 <p>Nothing to show here</p>
                 <h2>SKILLS</h2>
-                <p>Can touch his elbow with his tongue PUT XP ROUND HERE</p>
+                <p>Can touch his elbow with his tongue</p>
             </div>
-            <button className="menuButtonLeft menuButton save" onClick={SaveXP}>Save</button>
+            <button className="menuButtonLeft menuButton save" onClick={SaveProgress}>Save</button>
         </div>
         <div className="profileMenuRight">
             <div className="profileInfoContainer">

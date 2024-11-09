@@ -24,12 +24,32 @@ button {
 }
 
 .landPageBackground {
-  background-color: rgb(48, 24, 0);
+  background-color: rgba(0, 0, 0, 0);
   height: 100vh;
   width: 100vw;
 }
 
-.contract {
+.authBackgroundImage {
+  min-height: 100%;
+  min-width: 100%;
+  pointer-events: none;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.authChange {
+  position: fixed;
+  bottom: 2%;
+  left: 1.5%;
+  background-color: #00000092;
+  box-shadow: 0px 0px 5px 4px #00000092;
+  border-radius: 6%;
+  color: white;
+  font-size: x-large;
+}
+
+.authBox {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -38,28 +58,70 @@ button {
   bottom: 50%;
   right: 50%;
   transform: translate(50%, 50%);
-  rotate: -2deg;
-  padding: 2%;
-  background-color: rgb(255, 255, 255);
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 1%;
   border: solid 3px rgb(81, 81, 81);
 }
 
-.contractBack {
-  position: fixed;
-  aspect-ratio: 9 / 11;
-  height: 80vh;
-  width: auto;
-  bottom: 53%;
-  right: 39%;
-  transform: translate(50%, 50%);
-  rotate: 6deg;
-  background-color: rgb(67, 67, 67);
-  border: solid 3px rgb(33, 33, 33);
+.authForm {
+  padding-top: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputOne {
+  background: none;
+  border: double 3px rgb(47, 47, 47);
+  border-radius: 16px;
+  color: rgb(0, 0, 0);
+  padding: 5px;
+}
+
+.inputTwo {
+  background: none;
+  border: double 3px rgb(47, 47, 47);
+  border-radius: 16px;
+  color: whitesmoke;
+  padding: 5px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: medium;
+  max-width: 80%;
+  word-wrap: break-word;
+  white-space: normal
+}
+
+.authButton {
+  padding-top: 3px;
+  color: #7d4bff;
+  border: none;
+  background: none;
+  font-size: xx-large;
+}
+
+.authButton:hover {
+  scale: 125%;
+  transition: scale 0.3s ease;
+}
+
+.checkin {
+  color: greenyellow;
+  background: linear-gradient(360deg, rgba(136, 255, 51, 0.186) 0%, rgba(13, 99, 0, 0.186) 100%);
+}
+
+.contract {
+  rotate: -2deg;
+  background-color: rgb(255, 255, 255);
+  max-width: 500px;
 }
 
 .contractTitle {
-  display: flex;
-  justify-content: center;
+  align-self: center;
   padding-bottom: 3%;
 }
 
@@ -104,16 +166,6 @@ button {
   image-rendering: pixelated;
   object-fit: contain;
   pointer-events: none;
-}
-
-.settingsButton {
-  position: fixed;
-  z-index: 10;
-  background-image: url(./textures/cat_profile.png);
-  bottom: 18px;
-  right: 20px;
-  height: 30px;
-  width: 30px;
 }
 
 .hotbar {
@@ -262,6 +314,11 @@ button {
   border: none;
   font-size: x-large;
   align-self: flex-start;
+}
+
+.interactionButton:hover {
+  scale: 105%;
+  transition: scale 0.2s ease;
 }
 
 .pathWay {
@@ -546,7 +603,7 @@ button {
 }
 
 .logout {
-  color: rgb(255, 216, 23);
+  color: rgb(255, 166, 23);
 }
 
 .delete {

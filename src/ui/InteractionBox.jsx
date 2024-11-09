@@ -29,9 +29,9 @@ function InteractionBox() {
 
     const handleClickOutside = (event) => {
         if (!event.target.closest('.interactionBox')) {
-            setInteractionBoxVisible(false);
             setInteractionItem(null);
             setInteractionAction(0)
+            setInteractionBoxVisible(false);
         }
     };
 

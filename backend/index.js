@@ -44,11 +44,8 @@ app.post('/register', async (req, res) => {
         const { password, ...userData } = user.toObject();
         res.status(201).json({ message: 'User created', user: userData });
     } catch (error) {
-        if (error.code == 11000) {
-            res.status(400).send('Email already taken')
-        } else {
-            res.status(500).send('Error creating user')
-        };
+        res.status(500).send('Error creating user');
+        console.error(error)
     };
 })
 
@@ -95,13 +92,13 @@ app.post('/logout', (req, res) => {
     res.sendStatus(204);
 });
 
-app.post('/update-xp', async (req, res) => {
-    const { userId, xp } = req.body;
+app.post('/update-progress', async (req, res) => {
+    const { userId, xp, inventory } = req.body;
     try {
-        await User.findByIdAndUpdate(userId, { xp });
-        res.status(200).json({ message: 'XP updated successfully!' });
+        await User.findByIdAndUpdate(userId, { xp, inventory });
+        res.status(200).json({ message: 'Progress updated successfully!' });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to update XP' });
+        res.status(500).json({ error: 'Failed to update progress' });
     }
 });
 
