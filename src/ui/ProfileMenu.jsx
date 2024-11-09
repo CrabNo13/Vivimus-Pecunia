@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
+import axios from "axios";
 import { Context } from "../App";
 import ProfilePic from '../textures/cat_profile.png';
 
 function ProfileMenu() {
-    const { setProfileMenuVisible, userData } = useContext(Context)
+    const { setProfileMenuVisible, userData, setInteractionBoxVisible, setInteractionAction } = useContext(Context)
 
     {/*The following code makes it so when you click outside the profile menu, it closes. I don't know how it works, I don't wanna know how it works, but just don't touch it since it will break.*/ }
     const profileTabElement = document.querySelector('.profileTab');
@@ -22,6 +23,34 @@ function ProfileMenu() {
         };
     }, []);
 
+    const LogoutOption = () => {
+        setInteractionAction(2);
+        setInteractionBoxVisible(true);
+        setProfileMenuVisible(false)
+    };
+
+    const DeleteOption = () => {
+        setInteractionAction(3);
+        setInteractionBoxVisible(true);
+        setProfileMenuVisible(false)
+    };
+
+    async function SaveXP() {
+        const xp = userData.xp;
+        try {
+            const response = await axios.post('http://localhost:5000/update-xp', {
+                userId: userData._id,
+                xp
+            });
+
+            setInteractionAction(1);
+            setInteractionBoxVisible(true);
+            setProfileMenuVisible(false);
+        } catch (error) {
+            console.error('Failed to save XP:', error);
+        }
+    }
+
     return <div className="profileMenu">
         <div className="profileMenuLeft">
             <img src={ProfilePic} className="profilePicMenu"></img>
@@ -33,20 +62,21 @@ function ProfileMenu() {
                 <h2>SKILLS</h2>
                 <p>Can touch his elbow with his tongue PUT XP ROUND HERE</p>
             </div>
-            <button className="menuButtonLeft menuButton save">Save</button>
+            <button className="menuButtonLeft menuButton save" onClick={SaveXP}>Save</button>
         </div>
         <div className="profileMenuRight">
             <div className="profileInfoContainer">
                 <h1 style={{ fontWeight: "900", fontSize: "xx-large" }}>{userData.username}</h1>
-                <h2>Entry-Level Employee</h2>
+                <h2>{userData.rank}</h2>
+                <h2>XP: {userData.xp}</h2>
                 <h2>PROFILE</h2>
                 <p>As a profesional worker on their first job, they know nothing, only that they are hungry and need money.</p>
                 <h2>EXPERIENCE</h2>
                 <p>2019: Worked as a self employed professional sleeper. Worked for even 10 hours a day sometimes.</p>
             </div>
             <div className="menuButtonsRight">
-                <button className="menuButton logout">EndDay</button>
-                <button className="menuButton delete">QuitJob</button>
+                <button className="menuButton logout" onClick={LogoutOption}>EndDay</button>
+                <button className="menuButton delete" onClick={DeleteOption}>QuitJob</button>
             </div>
         </div>
     </div>

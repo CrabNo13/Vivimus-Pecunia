@@ -7,7 +7,6 @@ function ProfileTab() {
     const handleProfileClick = (event) => {
         event.stopPropagation();
         setProfileMenuVisible(!profileMenuVisible);
-        console.log(userData.username)
     }
 
     return <button className="profileTab" onClick={handleProfileClick}>

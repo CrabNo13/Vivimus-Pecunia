@@ -95,6 +95,26 @@ app.post('/logout', (req, res) => {
     res.sendStatus(204);
 });
 
+app.post('/update-xp', async (req, res) => {
+    const { userId, xp } = req.body;
+    try {
+        await User.findByIdAndUpdate(userId, { xp });
+        res.status(200).json({ message: 'XP updated successfully!' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to update XP' });
+    }
+});
+
+app.delete('/delete-account', async (req, res) => {
+    const { userId } = req.body;
+    try {
+        await User.findByIdAndDelete(userId);
+        res.status(200).json({ message: 'Account deleted successfully!' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to delete account' });
+    }
+});
+
 app.listen(PORT, () => {
     console.log("The app is running on port: ", PORT)
 })
