@@ -42,7 +42,6 @@ function AuthPage() {
             setErrorMessage('Please fill in all fields.');
             return;
         }
-        console.log('Register payload:', { username, password });
         try {
             // const response = await axios.post('http://localhost:5000/register', { username, password });
             const response = await axios.post('https://vivimuspecuniaserver.onrender.com/register', { username, password });
