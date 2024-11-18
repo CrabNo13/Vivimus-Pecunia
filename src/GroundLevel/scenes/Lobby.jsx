@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Context } from '../../App';
 import LobbyImage from '../../textures/lobby.png';
-import { getImage } from '../../textures/ImageMaps';
+import imageMap from '../../textures/ImageMaps';
 
 function Lobby({ changeScene }) {
     const { inventoryVisible, setInteractionItem, setInteractionBoxVisible } = useContext(Context);
@@ -29,7 +29,7 @@ function MugOne({ handleItemClick }) {
 
 
     return <button className='item mugOne' onClick={() => handleItemClick(item)}>
-        <img className='itemImage' src={getImage(2)} />
+        <img className='itemImage' src={imageMap[item]} />
     </button>
 }
 

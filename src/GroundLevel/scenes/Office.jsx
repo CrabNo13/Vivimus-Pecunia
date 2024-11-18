@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Context } from '../../App';
 import OfficeImage from '../../textures/office.png';
 import { getImage } from '../../textures/ImageMaps';
+import imageMap from '../../textures/ImageMaps';
 
 function Office({ changeScene }) {
     const { inventoryVisible, setInteractionItem, setInteractionBoxVisible } = useContext(Context);
@@ -29,7 +30,7 @@ function Pencil({ handleItemClick }) {
 
 
     return <button className='item pencil' onClick={() => handleItemClick(item)}>
-        <img className='itemImage' src={getImage(4)} />
+        <img className='itemImage' src={imageMap[item]} />
     </button>
 }
 

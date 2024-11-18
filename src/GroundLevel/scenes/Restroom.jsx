@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Context } from '../../App';
 import RestroomImage from '../../textures/restroom.png';
-import { getImage } from '../../textures/ImageMaps';
+import imageMap from '../../textures/ImageMaps';
 
 function Restroom({ changeScene }) {
     const { inventoryVisible, setInteractionItem, setInteractionBoxVisible } = useContext(Context);
@@ -29,7 +29,7 @@ function ToiletPaper({ handleItemClick }) {
 
 
     return <button className='item toiletPaper' onClick={() => handleItemClick(item)}>
-        <img className='itemImage' src={getImage(6)} />
+        <img className='itemImage' src={imageMap[item]} />
     </button>
 }
 

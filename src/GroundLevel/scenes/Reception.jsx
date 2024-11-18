@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ReceptionImage from '../../textures/reception.png';
 import { Context } from '../../App';
-import { getImage } from '../../textures/ImageMaps';
+import imageMap from '../../textures/ImageMaps';
 import bell from '../../sounds/bellSound.mp3';
 
 function Reception({ changeScene }) {
@@ -36,13 +36,13 @@ function Apple({ handleItemClick }) {
     const item = 3;
 
     return <button className='item apple' onClick={() => handleItemClick(item)}>
-        <img className='itemImage' src={getImage(3)} />
+        <img className='itemImage' src={imageMap[item]} />
     </button>
 }
 
 function Bell({ playSoundBell }) {
     return <button className='item bell' onClick={playSoundBell}>
-        <img className='itemImage' src={getImage(7)} />
+        <img className='itemImage' src={imageMap[7]} />
     </button>
 }
 

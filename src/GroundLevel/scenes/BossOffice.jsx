@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import BossOfficeImage from '../../textures/bossoffice.png';
 import { Context } from '../../App';
-import { getImage } from '../../textures/ImageMaps';
+import imageMap from '../../textures/ImageMaps';
 
 function BossOffice({ changeScene }) {
     const { inventoryVisible, setInteractionItem, setInteractionBoxVisible } = useContext(Context);
@@ -27,7 +27,7 @@ function Coin({ handleItemClick }) {
 
 
     return <button className='item coin' onClick={() => handleItemClick(item)}>
-        <img className='itemImage' src={getImage(8)} />
+        <img className='itemImage' src={imageMap[item]} />
     </button>
 }
 

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Context } from '../../App';
 import BreakroomImage from '../../textures/breakroom.png';
-import { getImage } from '../../textures/ImageMaps';
+import imageMap from '../../textures/ImageMaps';
 
 function Breakroom({ changeScene }) {
     const { inventoryVisible, setInteractionItem, setInteractionBoxVisible, equippedItem, setInteractionAction } = useContext(Context);
@@ -38,7 +38,7 @@ function BossKey({ handleItemClick }) {
 
 
     return <button className='item bossKey' onClick={() => handleItemClick(item)}>
-        <img className='itemImage' src={getImage(1)} />
+        <img className='itemImage' src={imageMap[item]} />
     </button>
 }
 

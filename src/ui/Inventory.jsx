@@ -1,7 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import { Context } from "../App";
 import InvInteractionBox from './InvInteractionBox';
-import { getImage } from '../textures/ImageMaps'
+import { getImage } from '../textures/ImageMaps';
+import imageMap from "../textures/ImageMaps";
 
 function Inventory() {
     const { playerInventory, setInventoryVisible } = useContext(Context);
@@ -27,10 +28,9 @@ function Inventory() {
     return <div className="inventoryUi">
         <div className="inventoryBox">
             {playerInventory.map((itemId) => {
-                const image = getImage(itemId)
                 return (
                     <button key={itemId} className="inventoryItem" onClick={() => setSelectedItem(itemId)}>
-                        <img src={image} className="invItemImage" />
+                        <img src={imageMap[itemId]} className="invItemImage" />
                     </button>
                 )
             })}
