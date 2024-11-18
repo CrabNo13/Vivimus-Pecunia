@@ -217,7 +217,7 @@ button {
 }
 
 .inventoryItem {
-  background: radial-gradient(rgb(252, 255, 179), rgb(136, 122, 0));
+  background: radial-gradient(rgb(68, 68, 68), rgb(0, 0, 0));
   border: outset 0.3em rgb(85, 85, 85);
   border-radius: 30%;
   width: 100%;
@@ -405,8 +405,8 @@ button {
 .apple {
   height: 5%;
   width: 3%;
-  right: 48%;
-  bottom: 33.4%;
+  right: 35%;
+  bottom: 30.4%;
 }
 
 .toiletPaper {
@@ -430,11 +430,49 @@ button {
   bottom: 23%;
 }
 
+.bossKey {
+  height: 3%;
+  width: 7%;
+  right: 0%;
+  bottom: 29%;
+}
+
+.bell {
+  height: 5%;
+  width: 3%;
+  right: 49%;
+  bottom: 33%;
+}
+
+.coin {
+  height: 2%;
+  width: 2%;
+  left: 17%;
+  bottom: 35%;
+}
+
+.vendingMachine {
+  position: absolute;
+  z-index: 1;
+  background: none;
+  border-radius: 10%;
+  filter: blur(8px);
+  border: none;
+  height: 45%;
+  width: 9%;
+  left: 20%;
+  bottom: 25%;
+}
+
+.vendingMachine:hover {
+  background-color: rgba(255, 255, 255, 0.211);
+}
+
 .profileMenu {
   position: fixed;
   z-index: 2;
   aspect-ratio: 9 / 10;
-  height: 69vh;
+  height: 80vh;
   width: auto;
   top: 50%;
   left: 50%;
@@ -447,9 +485,16 @@ button {
   overflow: hidden;
 }
 
-.profileInfoContainer {
-  height: 60%;
+.profileInfoContainerRight {
+  height: 91%;
   width: auto;
+  overflow-y: hidden;
+}
+
+.profileInfoContainerLeft {
+  height: 61%;
+  width: auto;
+  overflow-y: hidden;
 }
 
 .profileMenuLeft {
@@ -487,6 +532,8 @@ button {
   margin-bottom: 28%;
   height: 20%;
   width: auto;
+  image-rendering: pixelated;
+  background-color: rgba(168, 168, 168, 0.585);
   border-radius: 5%;
   border: double 4px grey;
 }
@@ -538,6 +585,18 @@ button {
   transition: scale 0.3s ease;
 }
 
+.tabName {
+  color: #5ccaff;
+}
+
+.tabRank {
+  color: #bababa;
+}
+
+.profileParagraph {
+  font-size: 9px;
+}
+
 @media (max-width: 1164px) {
   .inventoryBox {
     height: 60vh
@@ -560,6 +619,10 @@ button {
 
   .profileMenu {
     height: 50vh;
+  }
+
+  .profileParagraph {
+    font-size: 1em;
   }
 }
 
@@ -591,7 +654,6 @@ button {
 }
 
 .profileText {
-  color: rgb(0, 182, 6);
   font-size: x-large;
 }
 

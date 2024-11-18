@@ -1,10 +1,17 @@
-import { useContext } from 'react'
-import ReceptionImage from '../../textures/reception.png'
-import { Context } from '../../App'
+import { useContext } from 'react';
+import ReceptionImage from '../../textures/reception.png';
+import { Context } from '../../App';
 import { getImage } from '../../textures/ImageMaps';
+import bell from '../../sounds/bellSound.mp3';
 
 function Reception({ changeScene }) {
     const { setInteractionBoxVisible, setInteractionItem, inventoryVisible } = useContext(Context);
+
+    const bellSound = new Audio(bell)
+
+    function playSoundBell() {
+        bellSound.play();
+    }
 
     const handleItemClick = (item) => {
         setInteractionItem(item);
@@ -17,6 +24,7 @@ function Reception({ changeScene }) {
                 <img src={ReceptionImage} className="scenarioImage" />
                 <button className="pathWay pathReceptionOne" onClick={() => changeScene('Lobby')}></button>
                 <button className="pathWay pathReceptionTwo" onClick={() => changeScene('Restroom')}></button>
+                <Bell playSoundBell={playSoundBell} />
                 <Apple handleItemClick={handleItemClick} />
             </div>
         </div>
@@ -29,6 +37,12 @@ function Apple({ handleItemClick }) {
 
     return <button className='item apple' onClick={() => handleItemClick(item)}>
         <img className='itemImage' src={getImage(3)} />
+    </button>
+}
+
+function Bell({ playSoundBell }) {
+    return <button className='item bell' onClick={playSoundBell}>
+        <img className='itemImage' src={getImage(7)} />
     </button>
 }
 

@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import axios from "axios";
 import { Context } from "../App";
-import ProfilePic from '../textures/cat_profile.png';
+import ProfilePicture from '../textures/profilepicture.png';
 
 function ProfileMenu() {
     const { setProfileMenuVisible, userData,
@@ -58,26 +58,47 @@ function ProfileMenu() {
 
     return <div className="profileMenu">
         <div className="profileMenuLeft">
-            <img src={ProfilePic} className="profilePicMenu"></img>
-            <div className="profileInfoContainer">
+            <img src={ProfilePicture} className="profilePicMenu"></img>
+            <div className="profileInfoContainerLeft">
                 <h2>CONTACT</h2>
-                <p>Email: blah@gmail.com</p>
+                <p className="profileParagraph">Email: totallyprofessional@gmail.com</p>
+                <br />
                 <h2>EDUCATION</h2>
-                <p>Nothing to show here</p>
+                <p className="profileParagraph">University of Life and Bad Decisions
+                    Graduation: Pending, Eternally
+                    Majored in "Learning Things the Hard Way" with a minor in "Googling Everything Last Minute." Honors include perfect attendance in Procrastination 101 and completing several semesters of Overthinking without a break.</p>
+                <br />
                 <h2>SKILLS</h2>
-                <p>Can touch his elbow with his tongue</p>
+                <p className="profileParagraph">Multi-Tasking: Can scroll social media while pretending to listen in meetings.</p>
+                <p className="profileParagraph">Advanced Problem Solving: Expert in creating solutions for problems that didn’t need solving.</p>
+                <p className="profileParagraph">Time Management: Always on time—except when it matters.</p>
+                <p className="profileParagraph">Teamwork: Excels at assigning blame diplomatically.</p>
             </div>
             <button className="menuButtonLeft menuButton save" onClick={SaveProgress}>Save</button>
         </div>
         <div className="profileMenuRight">
-            <div className="profileInfoContainer">
+            <div className="profileInfoContainerRight">
                 <h1 style={{ fontWeight: "900", fontSize: "xx-large" }}>{userData.username}</h1>
+                <br />
                 <h2>{userData.rank}</h2>
-                <h2>XP: {userData.xp}</h2>
+                <br />
+                <h2>Xp: {playerXp}</h2>
+                <br />
                 <h2>PROFILE</h2>
-                <p>As a profesional worker on their first job, they know nothing, only that they are hungry and need money.</p>
+                <p className="profileParagraph">A highly adaptable individual specializing in the fine art of overthinking and making unnecessarily complex decisions look effortless. Known for unparalleled expertise in scrolling through streaming platforms for hours without picking a show and the uncanny ability to memorize useless trivia while forgetting what day it is. Offers a unique skill set that includes crafting the perfect sandwich, detecting sarcasm from a mile away, and providing unsolicited yet oddly accurate life advice. While conventional skills may not be present, the sheer creativity in finding new ways to avoid responsibility is unmatched.</p>
+                <br />
                 <h2>EXPERIENCE</h2>
-                <p>2019: Worked as a self employed professional sleeper. Worked for even 10 hours a day sometimes.</p>
+                <p className="profileParagraph">Professional Coffee Taster (Self-Appointed)
+                    2021 - Present
+                    Perfected the delicate balance of caffeine intake, ensuring optimal levels for procrastination and daydreaming. Notable achievements include surviving an overly strong espresso and identifying the subtle differences between "cheap" and "budget-friendly" instant coffee.</p>
+                <br />
+                <p className="profileParagraph">Amateur Fort Builder
+                    2015 - 2019
+                    Engineered world-class blanket forts using cutting-edge designs involving chairs, bedsheets, and an alarming amount of clothespins. Played a vital role in hosting negotiations for "who gets the last slice" summits.</p>
+                <br />
+                <p className="profileParagraph">Emergency Dance Floor Starter
+                    2020 (New Year’s Eve)
+                    Demonstrated leadership during a critical deadlock at a party by initiating a bold interpretive dance to ‘Dancing Queen.’ Successfully raised morale and established a long-standing reputation as "that person who dances first."</p>
             </div>
             <div className="menuButtonsRight">
                 <button className="menuButton logout" onClick={LogoutOption}>EndDay</button>

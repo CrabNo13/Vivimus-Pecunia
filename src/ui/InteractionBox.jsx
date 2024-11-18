@@ -51,6 +51,10 @@ function InteractionBox() {
             setDialogue('Should I finish this day of work and go home?');
         } else if (interactionAction === 3) {
             setDialogue('Do I REALLY want to quit this job?');
+        } else if (interactionAction === 4) {
+            setDialogue("I can't access the boss's office without the key in hand")
+        } else if (interactionAction === 5) {
+            setDialogue('I need a coin in hand to use the vending machine')
         }
     }, [interactionAction]);
 
