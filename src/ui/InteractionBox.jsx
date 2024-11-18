@@ -65,7 +65,8 @@ function InteractionBox() {
 
     const Logout = async () => {
         try {
-            await axios.post('http://localhost:5000/logout');
+            // await axios.post('http://localhost:5000/logout');
+            await axios.post('https://vivimuspecuniaserver.onrender.com/logout');
             localStorage.removeItem('authToken');
             window.location.href = '/authpage';
             setInteractionAction(0);
@@ -77,7 +78,8 @@ function InteractionBox() {
 
     async function DeleteAccount() {
         try {
-            const response = await axios.delete('http://localhost:5000/delete-account', {
+            // const response = await axios.delete('http://localhost:5000/delete-account', {
+            const response = await axios.delete('https://vivimuspecuniaserver.onrender.com/delete-account', {
                 data: { userId: userData._id }
             });
 

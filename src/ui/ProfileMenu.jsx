@@ -42,7 +42,8 @@ function ProfileMenu() {
         const inventory = playerInventory;
 
         try {
-            const response = await axios.post('http://localhost:5000/update-progress', {
+            // const response = await axios.post('http://localhost:5000/update-progress', {
+            const response = await axios.post('https://vivimuspecuniaserver.onrender.com/update-progress', {
                 userId: userData._id,
                 xp,
                 inventory
